@@ -1,3 +1,8 @@
+---
+title: API 연결
+parent: 설정 가이드
+nav_order: 1
+---
 # API 설정 가이드
 
 > AmyayaBot이 치지직(Chzzk) 방송에 연결되고, Google Gemini AI로 똑똑하게 반응하도록 해주는 설정입니다.

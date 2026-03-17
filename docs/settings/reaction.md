@@ -1,3 +1,8 @@
+---
+title: 반응 설정
+parent: 설정 가이드
+nav_order: 4
+---
 # 반응 설정 가이드
 
 ![반응 설정](../images/settings-reaction.png)

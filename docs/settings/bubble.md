@@ -1,3 +1,8 @@
+---
+title: 출력 설정
+parent: 설정 가이드
+nav_order: 8
+---
 # 출력 설정 가이드
 
 ![출력 설정](../images/settings-bubble.png)

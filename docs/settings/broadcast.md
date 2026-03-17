@@ -1,3 +1,8 @@
+---
+title: 방송 제어
+parent: 설정 가이드
+nav_order: 11
+---
 # 방송 제어 가이드
 
 ![방송 제어](../images/settings-broadcast.png)

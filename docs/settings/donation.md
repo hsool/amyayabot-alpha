@@ -1,3 +1,8 @@
+---
+title: 후원/구독
+parent: 설정 가이드
+nav_order: 5
+---
 # 후원/구독 반응 설정 가이드
 
 ![후원/구독 설정](../images/settings-donation.png)

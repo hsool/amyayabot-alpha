@@ -1,3 +1,8 @@
+---
+title: 음성 인식 (STT)
+parent: 설정 가이드
+nav_order: 6
+---
 # 음성 인식(STT) 설정 가이드
 
 ![STT 설정](../images/settings-stt.png)

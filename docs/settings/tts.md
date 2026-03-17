@@ -1,3 +1,8 @@
+---
+title: TTS 음성
+parent: 설정 가이드
+nav_order: 7
+---
 # TTS 음성 설정 가이드
 
 ![TTS 설정](../images/settings-tts.png)

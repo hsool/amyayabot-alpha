@@ -1,3 +1,8 @@
+---
+title: 고급 설정
+parent: 설정 가이드
+nav_order: 12
+---
 # 고급 설정 가이드
 
 ![고급 설정](../images/settings-advanced.png)

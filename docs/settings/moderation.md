@@ -1,3 +1,8 @@
+---
+title: 콘텐츠 관리
+parent: 설정 가이드
+nav_order: 9
+---
 # 콘텐츠 관리 가이드
 
 ![콘텐츠 관리](../images/settings-moderation.png)

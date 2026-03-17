@@ -1,3 +1,8 @@
+---
+title: 상호작용
+parent: 설정 가이드
+nav_order: 10
+---
 # 상호작용 설정 가이드
 
 ![상호작용 설정](../images/settings-interaction.png)
