@@ -86,7 +86,7 @@ start.bat
 | 오버레이 | http://localhost:18200/overlay | OBS 브라우저 소스 |
 | 백엔드 API | http://localhost:18300 | REST API |
 
-빌드된 버전에서는 설정 페이지와 오버레이가 http://localhost:18301 에서 제공됩니다.
+빌드된 버전에서도 설정 페이지와 오버레이가 개발 서버와 동일한 http://localhost:18200 에서 제공됩니다.
 
 ---
 
@@ -130,7 +130,7 @@ URL: http://localhost:18200/overlay
 ```
 
 - 배경은 기본적으로 투명 처리됩니다.
-- 빌드된 버전 사용 시 URL을 `http://localhost:18301/overlay`로 변경하세요.
+- 빌드된 버전에서도 동일한 URL `http://localhost:18200/overlay`를 사용합니다.
 - 아바타 위치와 말풍선 위치는 설정 페이지에서 조정 가능합니다.
 
 ---
@@ -208,8 +208,7 @@ URL: http://localhost:18200/overlay
 | 서비스 | 포트 |
 |--------|------|
 | Backend API | 18300 |
-| Frontend 개발 서버 | 18200 |
-| Frontend 빌드 서빙 | 18301 |
+| Frontend (개발/빌드) | 18200 |
 
 ---
 
@@ -240,7 +239,7 @@ URL: http://localhost:18200/overlay
 
 **Chzzk 연결이 끊어짐**
 - OAuth2 토큰 만료 시 설정 페이지에서 재인증 필요
-- 방화벽이 18300, 18301 포트를 차단하고 있지 않은지 확인
+- 방화벽이 18300, 18200 포트를 차단하고 있지 않은지 확인
 
 **말풍선이 아바타 밖으로 벗어남**
 - 설정 페이지 → **말풍선 설정** 탭에서 위치(상/하/좌/우)와 오프셋 조정

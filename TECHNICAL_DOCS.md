@@ -1184,7 +1184,7 @@ interface AppConfig {
   "server": {
     "host": "0.0.0.0",
     "port": 18300,
-    "frontend_port": 18301
+    "frontend_port": 18200
   },
   "chat_commands": {
     "enabled": true, "prefix": "!",
@@ -1597,15 +1597,14 @@ npm run build
 # dist/ 폴더 생성 → uvicorn이 정적 파일 서빙
 ```
 
-빌드 후 Frontend는 포트 18301에서 서빙된다.
+빌드 후 Frontend는 개발 서버와 동일한 포트 18200에서 서빙된다.
 
 ### 포트 구성
 
 | 포트 | 용도 | 설정 키 |
 |------|------|---------|
 | 18300 | Backend API/WebSocket | `server.port` |
-| 18301 | Frontend 빌드 서빙 | `server.frontend_port` |
-| 18200 | Frontend Vite 개발 서버 | Vite 기본값 |
+| 18200 | Frontend (개발/빌드 통일) | `server.frontend_port` / Vite 기본값 |
 
 ### 초기 설정 순서
 
