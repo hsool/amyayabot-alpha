@@ -125,9 +125,9 @@ ON으로 설정하면 익명 후원자도 투표에 참여합니다.
 ### OBS 연동
 - OBS 소스 추가: URL 입력
 - 주소: `/overlay/interactive`
-- 포트: 18200 (기본값)
+- 포트: 18300 (기본값)
 
-예시 URL: `http://localhost:18200/overlay/interactive`
+예시 URL: `http://localhost:18300/overlay/interactive`
 
 ## 빠른 설정 가이드
 

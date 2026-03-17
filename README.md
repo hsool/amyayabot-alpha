@@ -57,7 +57,6 @@
 ## 사전 요구사항
 
 - Python 3.10 ~ 3.13 (3.14는 일부 패키지의 Windows 바이너리 wheel 미제공으로 Visual C++ Build Tools 필요)
-- Node.js 18+
 - [Chzzk API 인증 정보](https://developers.chzzk.naver.com/) (Client ID, Client Secret, Channel ID)
 - [Google Gemini API 키](https://aistudio.google.com/apikey)
 
@@ -76,17 +75,14 @@ chmod +x start.sh
 start.bat
 ```
 
-시작 스크립트가 자동으로 Python 가상환경 생성, 의존성 설치, 백엔드/프론트엔드 서버를 실행합니다.
+시작 스크립트가 자동으로 Python 가상환경 생성, 의존성 설치, 모든 서비스를 실행합니다.
 
 ### 2. 접속
 
 | 페이지 | URL | 용도 |
 |--------|-----|------|
-| 설정 페이지 | http://localhost:18200/settings | 모든 설정 관리 |
-| 오버레이 | http://localhost:18200/overlay | OBS 브라우저 소스 |
-| 백엔드 API | http://localhost:18300 | REST API |
-
-빌드된 버전에서도 설정 페이지와 오버레이가 개발 서버와 동일한 http://localhost:18200 에서 제공됩니다.
+| 설정 페이지 | http://localhost:18300/settings | 모든 설정 관리 |
+| 오버레이 | http://localhost:18300/overlay | OBS 브라우저 소스 |
 
 ---
 
@@ -114,7 +110,7 @@ start.bat
 ### 4단계: OBS 연결
 
 1. OBS에서 소스 추가 → **브라우저**
-2. URL: `http://localhost:18200/overlay`
+2. URL: `http://localhost:18300/overlay`
 3. 너비/높이를 방송 해상도에 맞게 설정 (투명 배경 기본 적용)
 
 ---
@@ -124,13 +120,12 @@ start.bat
 OBS 브라우저 소스를 이용해 오버레이를 방송 화면에 추가합니다.
 
 ```
-URL: http://localhost:18200/overlay
+URL: http://localhost:18300/overlay
 너비: 방송 해상도 너비 (예: 1920)
 높이: 방송 해상도 높이 (예: 1080)
 ```
 
 - 배경은 기본적으로 투명 처리됩니다.
-- 빌드된 버전에서도 동일한 URL `http://localhost:18200/overlay`를 사용합니다.
 - 아바타 위치와 말풍선 위치는 설정 페이지에서 조정 가능합니다.
 
 ---
@@ -207,16 +202,15 @@ URL: http://localhost:18200/overlay
 
 | 서비스 | 포트 |
 |--------|------|
-| Backend API | 18300 |
-| Frontend (개발/빌드) | 18200 |
+| 서비스 (API + 설정 페이지 + 오버레이) | 18300 |
 
 ---
 
 ## 문제 해결
 
 **아바타가 표시되지 않음**
-- OBS 브라우저 소스 URL이 `http://localhost:18200/overlay`인지 확인
-- 백엔드 서버가 실행 중인지 확인 (http://localhost:18300)
+- OBS 브라우저 소스 URL이 `http://localhost:18300/overlay`인지 확인
+- 서버가 실행 중인지 확인 (http://localhost:18300)
 
 **AI가 반응하지 않음**
 - 설정 페이지에서 Gemini API 키와 Chzzk 인증 정보가 올바르게 입력되었는지 확인
@@ -239,7 +233,7 @@ URL: http://localhost:18200/overlay
 
 **Chzzk 연결이 끊어짐**
 - OAuth2 토큰 만료 시 설정 페이지에서 재인증 필요
-- 방화벽이 18300, 18200 포트를 차단하고 있지 않은지 확인
+- 방화벽이 18300 포트를 차단하고 있지 않은지 확인
 
 **말풍선이 아바타 밖으로 벗어남**
 - 설정 페이지 → **말풍선 설정** 탭에서 위치(상/하/좌/우)와 오프셋 조정

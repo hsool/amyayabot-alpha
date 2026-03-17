@@ -1184,7 +1184,7 @@ interface AppConfig {
   "server": {
     "host": "0.0.0.0",
     "port": 18300,
-    "frontend_port": 18200
+    "frontend_port": 18300
   },
   "chat_commands": {
     "enabled": true, "prefix": "!",
@@ -1566,7 +1566,7 @@ frontend/public/avatars/live2d/
 2. `pip install -q -r backend/requirements.txt`
 3. `frontend/node_modules/.package-lock.json` 확인 → 없으면 `npm install`
 4. Backend: `python backend/main.py &` (포트 18300)
-5. Frontend: `npx vite --host &` (포트 18200)
+5. Frontend: `npx vite --host &` (포트 18300)
 6. Ctrl+C 시 양쪽 프로세스 동시 종료
 
 ### start.bat (Windows)
@@ -1584,9 +1584,9 @@ frontend/public/avatars/live2d/
 | 구성 | URL |
 |------|-----|
 | Backend API | http://localhost:18300 |
-| Frontend Dev Server | http://localhost:18200 |
-| 설정 페이지 | http://localhost:18200/settings |
-| 오버레이 (OBS용) | http://localhost:18200/overlay |
+| Frontend Dev Server | http://localhost:18300 |
+| 설정 페이지 | http://localhost:18300/settings |
+| 오버레이 (OBS용) | http://localhost:18300/overlay |
 | WebSocket | ws://localhost:18300/ws/overlay |
 
 ### 빌드 모드
@@ -1597,25 +1597,25 @@ npm run build
 # dist/ 폴더 생성 → uvicorn이 정적 파일 서빙
 ```
 
-빌드 후 Frontend는 개발 서버와 동일한 포트 18200에서 서빙된다.
+빌드 후 Frontend는 개발 서버와 동일한 포트 18300에서 서빙된다.
 
 ### 포트 구성
 
 | 포트 | 용도 | 설정 키 |
 |------|------|---------|
 | 18300 | Backend API/WebSocket | `server.port` |
-| 18200 | Frontend (개발/빌드 통일) | `server.frontend_port` / Vite 기본값 |
+| 18300 | Frontend (개발/빌드 통일) | `server.frontend_port` / Vite 기본값 |
 
 ### 초기 설정 순서
 
 1. `./start.sh` 실행
-2. `http://localhost:18200/settings` 접속
+2. `http://localhost:18300/settings` 접속
 3. **API 연결** 탭 → Chzzk Client ID/Secret 입력 → OAuth 인증
 4. **API 연결** 탭 → Gemini API 키 입력
 5. **페르소나** 탭 → 캐릭터 이름/성격 설정
 6. (선택) **STT 설정** → 엔진 선택/모델 다운로드/마이크 설정
 7. (선택) **TTS 음성** → 엔진 선택/프리셋 설정
-8. OBS에 브라우저 소스 추가: `http://localhost:18200/overlay` (배경 투명)
+8. OBS에 브라우저 소스 추가: `http://localhost:18300/overlay` (배경 투명)
 9. **설정 저장** 버튼 클릭
 
 ### 환경 변수

@@ -726,7 +726,7 @@ taskkill /PID <PID> /F
    server:
      port: 3001       # 3000 대신 3001 사용
    websocket:
-     port: 18200      # 18300 대신 18200 사용
+     port: 18300      # 기본 포트
    ```
    그 후 OBS 오버레이 URL도 변경:
    ```
