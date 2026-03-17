@@ -1,0 +1,172 @@
+---
+---
+// AmyayaBot 문서 커스텀 스타일
+// just-the-docs 테마 위에 한국어 가독성 최적화
+
+// 기본 폰트 및 줄간격
+.main-content {
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  color: #d4d4d4;
+
+  // 본문 단락 간격
+  p {
+    margin-bottom: 1em;
+    line-height: 1.8;
+  }
+
+  // 헤더 스타일 통일
+  h1 {
+    font-size: 2em !important;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #444;
+  }
+
+  h2 {
+    font-size: 1.5em !important;
+    margin-top: 1.8em;
+    margin-bottom: 0.6em;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid #333;
+  }
+
+  h3 {
+    font-size: 1.2em !important;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  h4 {
+    font-size: 1.05em !important;
+    margin-top: 1.2em;
+    margin-bottom: 0.4em;
+  }
+
+  // 리스트 간격
+  ul, ol {
+    margin-bottom: 1em;
+
+    li {
+      margin-bottom: 0.3em;
+      line-height: 1.7;
+    }
+
+    // 중첩 리스트
+    ul, ol {
+      margin-top: 0.3em;
+      margin-bottom: 0.3em;
+    }
+  }
+
+  // 테이블 가독성
+  table {
+    font-size: 14px;
+    margin-bottom: 1.5em;
+    width: 100%;
+
+    th {
+      padding: 10px 14px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 8px 14px;
+      line-height: 1.6;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+  }
+
+  // 코드 블록
+  code {
+    font-size: 0.88em;
+    padding: 2px 6px;
+  }
+
+  pre {
+    margin-bottom: 1.5em;
+    padding: 16px;
+    line-height: 1.5;
+
+    code {
+      font-size: 13px;
+      padding: 0;
+    }
+  }
+
+  // 인용문 (팁, 경고)
+  blockquote {
+    margin: 1em 0;
+    padding: 12px 16px;
+    line-height: 1.7;
+    font-size: 14px;
+    border-left: 4px solid #4a9eff;
+    background: rgba(74, 158, 255, 0.06);
+    border-radius: 0 6px 6px 0;
+
+    p {
+      margin-bottom: 0.4em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // 이미지 (스크린샷)
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1em 0;
+    border: 1px solid #333;
+  }
+
+  // 구분선
+  hr {
+    margin: 2em 0;
+    border-color: #333;
+  }
+}
+
+// 사이드바 네비게이션
+.site-nav {
+  font-size: 14px;
+
+  .nav-list-item {
+    line-height: 1.6;
+  }
+}
+
+// 페이지 타이틀
+.page-header {
+  margin-bottom: 1.5em;
+}
+
+// 검색 입력
+.search-input {
+  font-size: 14px;
+}
+
+// 모바일 대응
+@media (max-width: 800px) {
+  .main-content {
+    font-size: 14px !important;
+
+    h1 { font-size: 1.6em !important; }
+    h2 { font-size: 1.3em !important; }
+    h3 { font-size: 1.1em !important; }
+
+    table {
+      font-size: 13px;
+
+      th, td {
+        padding: 6px 8px;
+      }
+    }
+  }
+}
