@@ -145,11 +145,11 @@ URL: http://localhost:18200/overlay
 
 ### 커스텀 아바타 제작
 
-**PNG 모드**: `frontend/public/avatars/{세트명}/` 폴더에 감정별 PNG 15장 배치 (파일명: `{감정}.png`)
+**PNG 모드**: `data/avatars/{세트명}/` 폴더에 감정별 PNG 15장 배치 (파일명: `{감정}.png`)
 
-**SVG 모드**: `frontend/public/avatars/parts/`의 SVG 파일 교체. 모든 SVG는 동일한 `viewBox` 사용 (기본: `0 0 300 350`)
+**SVG 모드**: `data/avatars/parts/`의 SVG 파일 교체. 모든 SVG는 동일한 `viewBox` 사용 (기본: `0 0 300 350`)
 
-**Live2D 모드**: `frontend/public/live2d/` 폴더에 모델 파일 배치. `.model3.json` 기준으로 로드
+**Live2D 모드**: `data/avatars/live2d/` 폴더에 모델 파일 배치. `.model3.json` 기준으로 로드
 
 ---
 

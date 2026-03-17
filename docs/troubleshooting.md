@@ -17,9 +17,9 @@ OBS 오버레이에 아바타(에이미) 이미지가 안 보임
 **확인 방법:**
 ```
 아바타 이미지 파일 위치:
-/frontend/public/avatars/png/{세트명}/{감정}.png
+/data/avatars/{세트명}/{감정}.png
 
-예: /frontend/public/avatars/png/default/happy.png
+예: /data/avatars/default/happy.png
 ```
 
 **해결 방법:**
@@ -52,7 +52,7 @@ avatar:
 **해결 방법:**
 1. 모델 파일 경로 확인:
    ```
-   /frontend/public/avatars/live2d/{모델명}/
+   /data/avatars/live2d/{모델명}/
    ```
 2. 필요한 파일:
    - `{모델명}.model3.json`
