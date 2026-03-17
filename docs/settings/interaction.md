@@ -7,6 +7,8 @@ nav_order: 10
 
 ![상호작용 설정](../images/settings-interaction.png)
 
+> ⚠️ **OBS 설정 필수**: 상호작용 기능(투표, 추첨, 룰렛 등)을 방송에 표시하려면 OBS에 상호작용 오버레이(`http://localhost:18300/overlay/interactive`)를 브라우저 소스로 추가해야 합니다.
+
 상호작용 설정으로 투표, 추첨, 도네이션 투표, 룰렛 같은 시청자 참여 기능을 관리합니다.
 
 ## 투표 기본 설정
