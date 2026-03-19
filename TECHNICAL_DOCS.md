@@ -560,7 +560,8 @@ class SkillRegistry:
     def register(skill: BaseSkill) -> None
     def get(name: str) -> BaseSkill | None
     def list_skills() -> list[dict]
-    def get_function_definitions() -> list[dict]  # Gemini tools 파라미터용
+    def get_adk_tools() -> list                   # voice_control 활성 스킬을 ADK Tool로 반환
+    def has_voice_enabled_skills() -> bool        # voice_control 활성 스킬 존재 여부 확인
     def active_skills() -> list[BaseSkill]        # _active=True 인 스킬만
 ```
 
@@ -640,9 +641,11 @@ class ChatCommandProcessor:
 ```
 ConversationMode._generate_response()
     │
-    ├── skill_registry.get_function_definitions()  → tools 리스트
+    ├── skill_registry.has_voice_enabled_skills()   → bool (도구 사용 여부 판단)
+    │       → True면 gemini_service가 get_adk_tools()로 ADK Tool 목록을 가져옴
+    │       → LLM이 직접 도구 선택 (키워드 필터 없음)
     │
-    ├── gemini_service.react_to_conversation(speeches, history, tools=tools)
+    ├── gemini_service.react_to_conversation(speeches, history, tools=has_tools)
     │       │
     │       └── _generate_with_tools(prompt, tools)
     │               │
