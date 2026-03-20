@@ -57,7 +57,7 @@
 ## 사전 요구사항
 
 - Python 3.10 ~ 3.13 (3.14는 일부 패키지의 Windows 바이너리 wheel 미제공으로 Visual C++ Build Tools 필요)
-- [Chzzk API 인증 정보](https://developers.chzzk.naver.com/) (Client ID, Client Secret, Channel ID)
+- 치지직(네이버) 계정 (별도 개발자 등록 불필요)
 - [Google Gemini API 키](https://aistudio.google.com/apikey)
 
 ---
@@ -88,14 +88,13 @@ start.bat
 
 ## 초기 설정 순서
 
-### 1단계: Chzzk API 설정
+### 1단계: 치지직 연결
 
-1. [치지직 개발자 포털](https://developers.chzzk.naver.com/)에서 애플리케이션 등록
-2. 리디렉션 URL: `http://localhost:8080/` 입력
-3. 권한: 채팅 읽기/쓰기, 후원 이벤트 수신 선택
-4. Client ID, Client Secret, Channel ID 확인
+1. 설정 페이지 → **API 설정** 탭에서 **"연결하기"** 버튼 클릭
+2. 브라우저에서 네이버 로그인 페이지가 열리면 로그인 후 권한 승인
+3. 연결 상태가 "연결됨"으로 바뀌면 완료
 
-> 처음 실행 시 OAuth2 인증을 위해 브라우저에서 네이버 로그인 페이지가 열리며, 로그인 후 자동으로 인증이 완료됩니다. 인증 중 `localhost:8080` 포트를 임시로 사용합니다.
+> 인증 과정에서 `localhost:8080` 포트를 임시로 사용합니다. 다른 프로그램이 이 포트를 사용 중이면 충돌할 수 있습니다.
 
 ### 2단계: Gemini API 설정
 
@@ -213,7 +212,7 @@ URL: http://localhost:18300/overlay
 - 서버가 실행 중인지 확인 (http://localhost:18300)
 
 **AI가 반응하지 않음**
-- 설정 페이지에서 Gemini API 키와 Chzzk 인증 정보가 올바르게 입력되었는지 확인
+- 설정 페이지에서 Gemini API 키가 올바르게 입력되었는지, 치지직 연결 상태가 정상인지 확인
 - 설정 페이지 상태 탭에서 서비스 연결 상태 확인
 - AI 채팅 반응이 on 상태인지 확인
 

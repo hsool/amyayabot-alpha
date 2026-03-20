@@ -279,7 +279,7 @@ amyayabot/
 
 **의존 서비스**: ConfigManager
 
-**설정 키**: `chzzk.client_id`, `chzzk.client_secret`
+**설정 키**: `chzzk.channel_id` (자동 감지, 수동 입력 가능). Client ID/Secret은 봇 앱에 내장 (코드 내 하드코딩, 사용자 설정 불필요).
 
 **재연결 정책**: 최대 5회, 지수 백오프 1→2→4→8→16초
 
@@ -1059,9 +1059,9 @@ interface AppConfig {
 ```json
 {
   "chzzk": {
-    "client_id": "",            // Chzzk OAuth2 Client ID
-    "client_secret": "",        // Chzzk OAuth2 Client Secret
-    "channel_id": ""            // 대상 채널 ID
+    "client_id": "",            // (미사용) 봇 앱에 내장됨
+    "client_secret": "",        // (미사용) 봇 앱에 내장됨
+    "channel_id": ""            // 대상 채널 ID (자동 감지, 수동 입력 가능)
   },
   "gemini": {
     "api_key": "",              // Google Gemini API 키
@@ -1613,7 +1613,7 @@ npm run build
 
 1. `./start.sh` 실행
 2. `http://localhost:18300/settings` 접속
-3. **API 연결** 탭 → Chzzk Client ID/Secret 입력 → OAuth 인증
+3. **API 연결** 탭 → "연결하기" 버튼 클릭 → 네이버 로그인 → 권한 승인
 4. **API 연결** 탭 → Gemini API 키 입력
 5. **페르소나** 탭 → 캐릭터 이름/성격 설정
 6. (선택) **STT 설정** → 엔진 선택/모델 다운로드/마이크 설정
