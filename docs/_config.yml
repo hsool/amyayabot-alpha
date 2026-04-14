@@ -1,34 +1,29 @@
-title: AmyayaBot 사용 가이드
-description: 치지직(Chzzk) 방송용 AI 캐릭터 봇 — 설정 및 사용 설명서
+title: AmyayaBot Documentation
+description: Beginner-friendly public docs for AmyayaBot — quick start, setup, settings, FAQ, and legacy reference links
 remote_theme: just-the-docs/just-the-docs
 
 url: https://hsool.github.io
 baseurl: /amyayabot-alpha
 
-# 한국어 검색 지원
 search_enabled: true
 search.heading_level: 3
-
-# 색상 테마
 color_scheme: dark
 
-# Footer
 footer_content: "AmyayaBot &copy; 2026. AI 기반 치지직 스트리밍 컴패니언 봇."
 
-# 외부 링크
 aux_links:
   "GitHub":
     - "https://github.com/hsool/amyayabot-alpha"
 
-# 버전별 문서 네비게이션
-nav_external_links:
-  - title: v1 문서 (유지보수)
-    url: /amyayabot-alpha/v1/
-  - title: v2 문서 (개발 중)
-    url: /amyayabot-alpha/v2/
-
-# 마크다운 옵션
 kramdown:
   syntax_highlighter_opts:
     block:
       line_numbers: false
+
+exclude:
+  - .omc/
+  - v1/node_modules/
+  - v1/package-lock.json
+  - v1/package.json
+  - v1/capture-screenshots.cjs
+  - v1/capture-screenshots.mjs

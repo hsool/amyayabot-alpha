@@ -259,6 +259,8 @@ amyayabot/
 
 **설정 키**: `timing.chat_buffer_interval` (flush 간격, 기본 10초), `timing.min_reaction_gap` (최소 반응 간격, 기본 6초), `chat_reaction.enabled`, `chat_reaction.output_mode`, `chat_response`
 
+**Warm-up 계약 메모**: startup 이후 Gemini cold-start 완화를 위한 safe warm-up은 `docs/v2/phase14-warmup.md` 기준을 따른다. 이 warm-up은 실제 overlay/chat/TTS 전달 경로를 통과하지 않고, live broadcast session과 분리된 dedicated warm-up session을 사용해야 한다.
+
 ---
 
 ### 2. ChzzkService
@@ -311,6 +313,12 @@ amyayabot/
 
 **모델 자동 마이그레이션**: `gemini-2.0-flash-lite` → `gemini-2.5-flash-lite`, `gemini-2.0-flash` → `gemini-2.5-flash`
 
+**Phase 14 참고**: Fish 전용 true live overlap 설계/리뷰 기준은 `docs/v2/phase14-fish-live-overlap.md`를 따른다. 이 문서는 현재 동작 설명과 별도로, live iterable/broker/metadata gating/cancellation 계약을 고정한다.
+
+**Warm-up 참고**: Gemini cold-start 완화를 위한 safe `run_async()` warm-up 설계/리뷰 기준은 `docs/v2/phase14-warmup.md`를 따른다. 이 문서는 dedicated `warmup_session_id`, no-op probe, side-effect guard, phase A/B timing, observability 계약을 고정한다.
+
+**Manual cache 참고**: conversation + tool-call lane의 manual Gemini `cachedContent` 설계/리뷰 기준은 `docs/v2/phase14-manual-cachedcontent-toolcall.md`를 따른다. 이 문서는 static instruction / dynamic suffix 분리, manual cache fingerprint, `before_model_callback` attach seam, uncached fallback, observability 계약을 고정한다.
+
 ---
 
 ### 4. SttService
@@ -351,6 +359,8 @@ amyayabot/
 **의존 서비스**: ConfigManager, TTSEngine (factory로 생성)
 
 **설정 키**: `tts.enabled`, `tts.active_preset`, `tts.presets`, `tts.output_volume`, `tts.supertone_api_key`, `tts.fish_api_key`
+
+**스트리밍 계약 메모**: Fish Speech는 live iterable 입력을 받을 수 있지만, true overlap 여부는 upstream이 final text 이전에 iterable을 공급하는지에 달려 있다. Phase 14의 목표 계약과 리뷰 기준은 `docs/v2/phase14-fish-live-overlap.md`에 정리되어 있다.
 
 **엔진 종류**:
 - `edge_tts`: Microsoft Edge Neural TTS (네트워크)
@@ -647,10 +657,13 @@ ConversationMode._generate_response()
     │
     ├── gemini_service.react_to_conversation(speeches, history, tools=has_tools)
     │       │
-    │       └── _generate_with_tools(prompt, tools)
+    │       └── _run_conversation_with_tools(prompt, user_text)
     │               │
-    │               ├── 텍스트 응답 → {"type": "text", "text": "..."}
-    │               └── 함수 호출 → {"type": "function_call", "name": "...", "args": {...}}
+    │               ├── ADK Agent/App/Runner.run_async() 경로 유지
+    │               ├── (Phase 14 manual cache 사용 시) before_model_callback에서
+    │               │   `cached_content` attach + 중복 system/tool payload 제거
+    │               ├── 텍스트 응답 → AIReaction 파싱
+    │               └── 함수 호출 → tool callback / follow-up state 처리
     │
     ├── function_call 인 경우 → _handle_function_call(fc)
     │       │
