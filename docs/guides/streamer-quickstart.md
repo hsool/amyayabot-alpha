@@ -1,96 +1,78 @@
 ---
-title: Streamer Quickstart
+title: Quick Start
 parent: Guides
-nav_order: 1
+nav_order: 2
 ---
-# Streamer Quickstart
+# Quick Start
 
-이 문서는 **길게 읽지 않고도 방송 가능한 상태까지 빨리 가는 요약 가이드**야.
-처음엔 세부 설명보다 **“무엇부터 하면 되나”**만 잡아도 충분해.
-
-![Quickstart settings overview](../assets/screenshots/guides/quickstart.png)
+이 문서는 “AmyayaBot을 실행하고 OBS에 붙인 뒤, 안전하게 첫 반응을 확인하는 것”을 목표로 합니다.
 
 ---
 
-## 정말 먼저 할 것 5가지
+## 1. 실행
 
-### 1) 봇 실행
 ```bash
+# Linux / macOS
+chmod +x start.sh
 ./start.sh
+
+# Windows
+start.bat
 ```
-또는 Windows에서는 `start.bat`
 
-### 2) 설정 페이지 열기
-- 보통: `http://localhost:18300/settings`
+주소:
 
-### 3) Gemini API 키 넣기
-이게 없으면 AI 반응이 거의 안 돌아가.
-
-### 4) 캐릭터 기본 정보 넣기
-- 스트리머 이름
-- 캐릭터 이름
-- 캐릭터 프리셋
-- 주요 콘텐츠
-
-### 5) 출력 채널 하나 이상 켜기
-최소 하나는 켜야 실제 반응이 보여.
-- TTS
-- 말풍선
-- 채팅 출력
+- 설정: `http://localhost:18300/settings`
+- 메인 오버레이: `http://localhost:18300/overlay`
 
 ---
 
-## 치지직은 이렇게 생각하면 쉬워
+## 2. 필수값 입력
 
-치지직을 쓸 거라면,
-처음엔 **채널 ID를 직접 찾는 것보다 연동 버튼으로 먼저 로그인하는 흐름**으로 생각하면 돼.
-
-- 기본 사용: **치지직 연동하기**
-- 연결이 되면: **채널 정보 자동 확인**
-- Client ID / Secret 직접 변경: 나중에 **연결 설정**에서 필요할 때만
-
-즉,
-처음부터 고급 자격 증명 화면처럼 생각하지 않아도 괜찮아.
+| 위치 | 값 | 설명 |
+| --- | --- | --- |
+| 연결 설정 → Gemini AI | API 키 | AI 반응 생성에 필요합니다. |
+| 페르소나 | 스트리머 이름 / 캐릭터 이름 / 주 콘텐츠 / 프리셋 | 캐릭터 말투와 방송 맥락 기준입니다. |
+| 빠른 설정 | 말풍선 ON | 가장 안전한 첫 출력입니다. |
+| OBS 브라우저 소스 | `/overlay` URL | 방송 화면에 캐릭터와 말풍선을 띄웁니다. |
 
 ---
 
-## OBS를 쓴다면
+## 3. 채팅 출력은 나중에 켜기
 
-처음에는 이것만 보면 충분해.
+`채팅 출력`은 AI가 만든 문장을 실제 치지직 채팅방에 보냅니다. 처음부터 켜면 테스트 문구가 방송 채팅에 노출될 수 있습니다.
 
-- 메인 오버레이: `/overlay`
-- 필요하면 OBS WebSocket도 연결
+권장 순서:
 
-처음부터 모든 오버레이를 다 붙이기보다,
-**메인 오버레이 + 기본 반응 확인**부터 시작하는 게 가장 쉬워.
-
----
-
-## 다른 봇이 이미 있다면
-
-이미 다른 봇이 `!명령어`를 처리하고 있다면,
-처음엔 **채팅 명령어/매크로 기능을 꺼두는 편**이 안전해.
-
-안 그러면:
-- 명령어가 겹치거나
-- 채팅이 어수선해질 수 있어.
+1. 말풍선으로 문장 확인
+2. TTS 미리듣기 확인
+3. 치지직 OAuth 연결
+4. 채팅 출력 ON
+5. 발송 제한과 매크로 문구 확인
 
 ---
 
-## 여기까지 되면 일단 시작 가능
+## 4. OBS WebSocket은 브라우저 소스와 다릅니다
 
-아래 체크만 통과하면 돼.
+OBS 브라우저 소스는 오버레이를 “보여주는” 기능입니다. OBS WebSocket은 AmyayaBot이 OBS의 현재 씬/소스 정보를 “읽거나 제어하는” 연결입니다.
 
-- [ ] settings 페이지가 열린다
-- [ ] Gemini API 키가 들어가 있다
-- [ ] 캐릭터 기본 정보가 들어가 있다
-- [ ] 출력 채널이 하나 이상 켜져 있다
-- [ ] (필요 시) OBS overlay가 열린다
-- [ ] (필요 시) 치지직 연동이 된다
+| 필요한 기능 | OBS WebSocket 필요 여부 |
+| --- | --- |
+| `/overlay`를 OBS에 띄우기 | 필요 없음 |
+| DND 씬 자동 감지 | 필요 |
+| Vision 화면 캡처/ROI | 필요 |
+| OBS scene/source 목록 선택 | 필요 |
+
+설정 방법은 [외부 연동 설정 → OBS WebSocket](../settings/external-integrations.md#obs-websocket-연결)을 참고하세요.
 
 ---
 
-## 다음 문서
-- 더 자세히: [Streamer Detailed Setup](streamer-detailed-setup.md)
-- 온보딩 설명: [First-Run Onboarding](first-run-onboarding.md)
-- 설정별 설명: [Settings Guide](../settings/index.md)
+## 5. 다음에 켤 기능
+
+| 하고 싶은 일 | 다음에 볼 문서 |
+| --- | --- |
+| 각 설정값 의미를 알고 싶음 | [설정 탭별 상세 레퍼런스](../settings/settings-reference.md) |
+| CHZZK/Gemini/Naver/OBS/TTS API 키나 팬카페 ID를 연결하고 싶음 | [외부 연동 설정](../settings/external-integrations.md) |
+| 채팅 매크로 변수와 배칭 효과를 알고 싶음 | [채팅 출력/매크로](../settings/settings-reference.md#채팅-출력매크로) |
+| Fish/Supertone/Supertonic 차이를 알고 싶음 | [TTS 출력](../settings/settings-reference.md#tts-출력) |
+| 문제가 생김 | [Troubleshooting](../wiki/troubleshooting.md) |

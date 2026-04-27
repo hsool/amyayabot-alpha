@@ -4,20 +4,25 @@ nav_order: 90
 ---
 # Legacy / Reference
 
-이 페이지는 **예전 문서와 참고용 기술 메모가 어디에 있는지** 안내하는 페이지야.
+이 페이지는 **현재 공개 가이드와 구분해서 보관하는 과거 문서**를 안내합니다.
 
-> 이 문서들은 현재 공개 가이드의 기본 흐름이 아니고,
-> 필요할 때만 참고용으로 보는 자료야.
+## 보존 중인 문서
 
-## Legacy user docs
-- [Legacy v1 docs (GitHub)](https://github.com/hsool/amyayabot/tree/dev-omx/docs-legacy/v1)
-  - 예전 빠른 시작, 사용자 가이드, 문제 해결 문서
+- [Legacy v1 사용자 문서](https://github.com/hsool/amyayabot/tree/dev-omx/docs-legacy/v1)
+  - 과거 빠른 시작, 사용자 가이드, 설정 설명, 문제 해결 문서
+  - 현재 UI와 다를 수 있으므로 보조 참고용으로만 사용하세요.
 
-## Engineering notes
-- [Legacy v2 notes (GitHub)](https://github.com/hsool/amyayabot/tree/dev-omx/docs-legacy/v2)
-  - 특정 phase 중심의 엔지니어링 노트
+## 제거/퇴역한 문서
 
-## 어떻게 보는 게 좋을까?
-- 일반 사용자 / 스트리머라면 먼저 현재 문서(`Quick Start`, `Detailed Setup`, `Settings Guide`)를 보고
-  부족한 정보가 있을 때만 legacy를 참고해.
-- 개발자라면 repo 안의 [docs-dev](https://github.com/hsool/amyayabot/tree/dev-omx/docs-dev), [docs-legacy](https://github.com/hsool/amyayabot/tree/dev-omx/docs-legacy) 폴더를 함께 보면 돼.
+- `docs-legacy/v2`의 phase별 engineering notes는 Phase 24 재작성에서 제거했습니다.
+- 이유: 현재 공개 문서·기술문서와 내용이 섞이면 사용자가 오래된 설명을 최신 기능으로 오해할 수 있기 때문입니다.
+- 유지보수 기준 기술 설명은 repo root의 [`TECHNICAL_DOCS.md`](../TECHNICAL_DOCS.md)에 새로 모았습니다.
+
+## 어떤 문서를 먼저 봐야 하나요?
+
+| 대상 | 먼저 볼 문서 |
+| --- | --- |
+| 스트리머/일반 사용자 | [Quick Start](guides/streamer-quickstart.md), [Detailed Setup](guides/streamer-detailed-setup.md), [Settings Guide](settings/index.md) |
+| 운영 중 문제 해결 | [FAQ & Troubleshooting](wiki/index.md) |
+| 유지보수 개발자 | [`TECHNICAL_DOCS.md`](../TECHNICAL_DOCS.md) |
+| 과거 화면 참고 | `docs-legacy/v1` |
