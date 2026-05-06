@@ -16,7 +16,7 @@ nav_order: 90
 
 - `docs-legacy/v2`의 phase별 engineering notes는 Phase 24 재작성에서 제거했습니다.
 - 이유: 현재 공개 문서·기술문서와 내용이 섞이면 사용자가 오래된 설명을 최신 기능으로 오해할 수 있기 때문입니다.
-- 유지보수 기준 기술 설명은 repo root의 [`TECHNICAL_DOCS.md`](../TECHNICAL_DOCS.md)에 새로 모았습니다.
+- 유지보수 기준 기술 설명은 [`TECHNICAL_DOCS.md`](TECHNICAL_DOCS.md)에 새로 모았습니다.
 
 ## 어떤 문서를 먼저 봐야 하나요?
 
@@ -24,5 +24,5 @@ nav_order: 90
 | --- | --- |
 | 스트리머/일반 사용자 | [Quick Start](guides/streamer-quickstart.md), [Detailed Setup](guides/streamer-detailed-setup.md), [Settings Guide](settings/index.md) |
 | 운영 중 문제 해결 | [FAQ & Troubleshooting](wiki/index.md) |
-| 유지보수 개발자 | [`TECHNICAL_DOCS.md`](../TECHNICAL_DOCS.md) |
+| 유지보수 개발자 | [`TECHNICAL_DOCS.md`](TECHNICAL_DOCS.md) |
 | 과거 화면 참고 | `docs-legacy/v1` |

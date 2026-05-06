@@ -46,4 +46,4 @@ AmyayaBot은 치지직 방송에 AI 캐릭터를 붙여 **아바타, 말풍선, 
 
 ## 개발자 / 유지보수자 문서
 
-기술 구조와 유지보수 기준은 [TECHNICAL_DOCS.md](../TECHNICAL_DOCS.md)를 참고하세요. public docs는 스트리머 운영 중심, technical docs는 코드 유지보수 중심으로 분리합니다.
+기술 구조와 유지보수 기준은 [TECHNICAL_DOCS.md](TECHNICAL_DOCS.md)를 참고하세요. public docs는 스트리머 운영 중심, technical docs는 코드 유지보수 중심으로 분리합니다.
