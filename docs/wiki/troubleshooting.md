@@ -11,7 +11,7 @@ nav_order: 2
 
 | 확인 | 해결 |
 | --- | --- |
-| 백엔드가 실행 중인가? | `start.bat` 또는 `start.sh`를 다시 실행합니다. |
+| 백엔드가 실행 중인가? | Windows는 루트의 `AmyayaBot.cmd`, Linux/macOS는 `launchers/unix/start.sh`를 다시 실행합니다. |
 | 포트가 맞는가? | 설정 페이지 기본 주소는 `http://localhost:18300/settings`입니다. 개발 서버는 `http://localhost:18200/settings`일 수 있습니다. |
 | 빌드 파일이 있는가? | 배포 모드는 `frontend/dist/index.html`이 있어야 정적 페이지를 제공합니다. |
 

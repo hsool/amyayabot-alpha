@@ -77,12 +77,14 @@ AmyayaBot은 **치지직 방송에 AI 캐릭터를 붙여 운영하는 로컬 �
 
 ```bash
 # Linux / macOS
-chmod +x start.sh
-./start.sh
+chmod +x launchers/unix/start.sh
+./launchers/unix/start.sh
 
 # Windows
-start.bat
+AmyayaBot.cmd
 ```
+
+Windows에서는 루트의 `AmyayaBot.cmd`를 더블클릭하는 것을 권장합니다. PowerShell에서 직접 실행한다면 `.\AmyayaBot.cmd`를 사용하세요. 내부 호환 스크립트는 `launchers/` 아래에 보관합니다.
 
 일반 실행 주소:
 

@@ -13,12 +13,14 @@ nav_order: 2
 
 ```bash
 # Linux / macOS
-chmod +x start.sh
-./start.sh
+chmod +x launchers/unix/start.sh
+./launchers/unix/start.sh
 
 # Windows
-start.bat
+AmyayaBot.cmd
 ```
+
+Windows에서는 압축을 푼 폴더의 루트에서 `AmyayaBot.cmd`를 더블클릭하세요. PowerShell에서 실행한다면 `.\AmyayaBot.cmd`를 입력합니다.
 
 주소:
 

@@ -28,12 +28,14 @@ nav_order: 1
 
 ```bash
 # Linux / macOS
-chmod +x start.sh
-./start.sh
+chmod +x launchers/unix/start.sh
+./launchers/unix/start.sh
 
 # Windows
-start.bat
+AmyayaBot.cmd
 ```
+
+Windows에서는 루트의 `AmyayaBot.cmd`가 기본 런처입니다. `start.bat`, PowerShell helper, Unix shell script는 `launchers/` 하위의 보조 진입점입니다.
 
 브라우저에서 다음 주소를 엽니다.
 
