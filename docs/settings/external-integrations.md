@@ -58,6 +58,7 @@ AmyayaBot은 로컬에서 실행되지만, 일부 기능은 외부 API나 OBS �
 ## CHZZK OAuth/API
 
 ### 무엇에 쓰이나요?
+> 치지직 내부에서 사용되는 계정을 연결하는 역할입니다.
 
 - 치지직 채팅/후원/구독 이벤트 수신
 - 봇 채팅 전송
@@ -74,19 +75,21 @@ AmyayaBot은 로컬에서 실행되지만, 일부 기능은 외부 API나 OBS �
 | 연결 해제 | token/revoke 또는 로컬 연결 상태 해제 |
 
 ### OAuth 흐름 요약
-
-CHZZK 공식 문서 기준 인증 코드는 `https://chzzk.naver.com/account-interlock`에서 요청하고, `redirectUri`로 `code`와 `state`가 전달됩니다. access token은 1일, refresh token은 30일 유효하다고 문서화되어 있습니다.
+> 치지직의 공식 API는 치지직 내부에서 사용될 ID 명의로 앱을 등록하고 해당 앱ID로 동작하도록 되어있습니다. 이 앱의 권한은 방송하는 스트리머의 권한을 위임받아 작업을 수행하는 구조입니다.
+> 예를 들어, '채팅봇'이라는 치지직닉네임을 갖는 네이버ID 명의로 개발자센터에서 앱ID를 등록하고, 이를 현재 프로젝트의 Client ID/Secret에 등록해두면 스트리머의 권한을 위임받아 치지직 구독수신, 채팅수신, 발송 등을 '채팅봇' 이름으로 수행하게 됩니다.
+> 만약 스트리머의 ID 명의로 앱을 등록하고 사용한다면, 봇이 발송하는 채팅도 '스트리머 : ~~~~' 형태로 발송됩니다.
 
 AmyayaBot에서 직접 앱을 운영할 때는:
 
-1. CHZZK 개발자 페이지에서 앱을 등록합니다.
-2. 로그인 redirect URL을 로컬 callback 주소와 맞춥니다. 현재 봇은 로컬 OAuth callback에 포트 `18301`을 사용합니다.
-3. 발급된 Client ID/Secret을 **연결 설정 → Chzzk OAuth**에 입력합니다.
-4. 연결하기 버튼으로 브라우저 인증을 완료합니다.
+1. CHZZK 개발자 페이지( https://developers.chzzk.naver.com )에서 앱을 등록합니다.
+2. 로그인 redirect URL을 로컬 callback 주소( http://localhost:18301 ) 로 작성합니다. 현재 봇은 로컬 OAuth callback에 포트 `18301`을 사용합니다.
+3. API 권한은 이후 수정 시엔 재심사를 받아야하므로 여유있게 주는게 낫습니다. ( API 권한이 허용되어있더라도, 실제 권한은 스트리머 계정에서 위임받은 권한만 사용됩니다. ) [ 필수권한 : 채널정보조회, 채팅 메시지 조회, 쓰기, 공지 쓰기, 유저 조회, 후원 조회, 구독 조회, 방송 설정 조회, 방송 설정 변경 ]
+4. 발급된 Client ID/Secret을 **연결 설정 → Chzzk OAuth**에 입력합니다.
+5. 연결하기 버튼으로 브라우저 인증을 완료합니다.
 
 주의:
 
-- redirect URI가 앱 등록값과 다르면 인증이 실패합니다.
+- redirect URI가 앱 등록값과 다르면 인증이 실패합니다. ( 완벽히 동일해야 합니다 :  http://localhost:18301 )
 - Client ID/Secret만으로 방송 권한을 행사하는 것은 아니며, 사용자 로그인과 OAuth 권한 허용이 필요합니다.
 - 그래도 공개 repo나 방송 화면에는 secret을 노출하지 않는 것이 원칙입니다.
 
@@ -150,15 +153,15 @@ Gemini 도구가 웹/네이버 결과 또는 스트리머 팬카페의 최근 �
 
 공식 웹문서/카페글 검색을 사용하려면 Naver Developers 키가 필요합니다. Naver 공식 문서 기준 Search API는 비로그인 방식 Open API이며, 요청 헤더에 Client ID와 Client Secret을 넣어 호출합니다. 웹문서 검색 API는 하루 호출 한도 25,000회로 문서화되어 있습니다.
 
-1. Naver Developers에서 애플리케이션을 등록합니다.
-2. API 설정에서 검색 API 사용 권한을 켭니다.
+1. Naver Developers ( https://developers.naver.com/main/ )에서 애플리케이션을 등록합니다. [ Application -> 어플리케이션 등록 ]
+2. API 설정에서 '검색' API 사용 권한을 줍니다.
 3. Client ID와 Client Secret을 확인합니다.
 4. AmyayaBot `/settings` → **연결 설정 → 웹/팬카페 검색**
 5. **공식 Naver Search API 선택 설정** 영역에 Naver Client ID/Secret을 입력 후 저장합니다.
 
 이 키는 일반 웹 검색, 공식 카페글 검색, 팬카페 이름/URL slug 기반 후처리 필터에 사용됩니다. 아래 숫자 `cafeId`/`clubid` 조회만 쓸 때는 필수값이 아닙니다.
 
-### 팬카페 cafeId / clubid
+### 팬카페 cafeId / clubid - 비공식 네이버 API를 사용합니다.
 
 이 값은 페르소나 성격이나 말투가 아니라 **외부 데이터 연결값**입니다. 그래서 설정 위치는 페르소나 탭이 아니라 **연결 설정 → 웹/팬카페 검색**입니다. 숫자 `clubid`/`cafeId`만 입력하는 경로는 Naver Client ID/Secret이 없어도 동작합니다.
 
@@ -217,7 +220,7 @@ TTS는 두 단계를 나누어 생각하세요.
 1. **연결 설정**에서 API 키 또는 로컬 런타임 준비
 2. **TTS 출력**에서 active preset이 해당 provider를 실제로 사용하도록 선택
 
-### Edge TTS
+### Edge TTS : 온라인 호출, 무료
 
 | 항목 | 설명 |
 | --- | --- |
@@ -226,7 +229,7 @@ TTS는 두 단계를 나누어 생각하세요.
 | 장점 | 첫 테스트가 쉽고 mp3 streaming 경로가 있습니다. |
 | 제한 | 감정 스타일을 지원하지 않습니다. |
 
-### Supertonic 로컬
+### Supertonic : 로컬 처리, 무료
 
 | 항목 | 설명 |
 | --- | --- |
@@ -236,7 +239,7 @@ TTS는 두 단계를 나누어 생각하세요.
 | 장점 | 로컬 실행, API 과금 없음, 빠른 합성 |
 | 제한 | 감정 스타일 미지원, 로컬 런타임/모델 준비 필요 |
 
-### Supertone API
+### Supertone API : 온라인 호출, 유료, 감정표현을 지원 ( 미완성 )
 
 공식 Supertone API 문서는 TTS 호출에 voice ID와 API key가 필요하다고 설명합니다. 현재 AmyayaBot 코드의 Supertone engine은 Supertone Play 계열 REST 경로를 사용하므로, provider 정책 변경 시 endpoint/인증 방식 검증이 필요합니다.
 
@@ -248,7 +251,7 @@ TTS는 두 단계를 나누어 생각하세요.
 | 장점 | 감정/style 기반 음성 가능 |
 | 제한 | API 비용/한도, endpoint 정책 변경 가능성 |
 
-### Fish Audio / Fish Speech
+### Fish Audio / Fish Speech : 온라인 호출, 유료, 감정표현을 지원
 
 Fish Audio 공식 TTS API는 `Authorization: Bearer <token>`과 모델 헤더(`s2-pro` 등), `reference_id`, `temperature`, `top_p` 같은 필드를 사용합니다.
 
