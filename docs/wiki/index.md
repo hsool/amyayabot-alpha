@@ -5,19 +5,13 @@ has_children: true
 ---
 # FAQ & Troubleshooting
 
-방송 준비 중 막혔을 때 빠르게 확인하는 위키형 문서 모음입니다. 먼저 아래 순서로 확인해 주세요.
-
-1. **자주 묻는 질문**: 기능을 켜야 하는 기준, API 키가 필요한 이유, 다른 봇과 함께 쓰는 방법
-2. **문제 해결**: 연결은 됐는데 반응이 안 나오거나, OBS/음성/검색이 동작하지 않을 때
-3. **운영 체크리스트**: 방송 전·중·후에 확인할 항목
+방송 준비 중 막혔을 때 빠르게 확인하는 문서입니다. 짧은 FAQ와 운영 체크리스트는 현재 기준의 [Troubleshooting](troubleshooting.md) 한 페이지로 통합했습니다.
 
 ## 문서 바로가기
 
 | 문서 | 언제 보나요? |
 | --- | --- |
-| [FAQ](faq.md) | 기능과 설정의 의미를 빠르게 확인하고 싶을 때 |
-| [Troubleshooting](troubleshooting.md) | 오류 메시지, 무반응, 연결 실패를 해결할 때 |
-| [Operations Checklist](operations-checklist.md) | 방송 전 리허설과 방송 후 정리를 할 때 |
+| [Troubleshooting](troubleshooting.md) | 오류 메시지, 무반응, 연결 실패, FAQ, 방송 전·중·후 체크리스트를 확인할 때 |
 
 ## 먼저 확인할 공통 원칙
 

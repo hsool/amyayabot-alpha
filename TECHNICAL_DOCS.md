@@ -44,10 +44,10 @@ flowchart LR
     end
 
     subgraph Frontend[React/Vite frontend]
-        SettingsPage[/settings]
-        Overlay[/overlay]
-        Interactive[/overlay/interactive]
-        Music[/overlay/music]
+        SettingsPage["/settings"]
+        Overlay["/overlay"]
+        Interactive["/overlay/interactive"]
+        Music["/overlay/music"]
     end
 
     Chzzk --> Pipeline
