@@ -369,9 +369,10 @@ This table lists the endpoints maintainers most often need. It is not a replacem
 
 ## 12. Known risks and improvement priorities
 
+This table tracks open improvement priorities for maintainers. It is not a list of confirmed release blockers; remove items when they are intentionally accepted, fully mitigated, or no longer useful as maintenance guidance.
+
 | Priority | Area | Risk | Recommended next step |
 | --- | --- | --- | --- |
-| High before public push | Secrets hygiene | `data/config.json` and local test files can contain real keys; CHZZK built-in secret policy must be reviewed before public mirroring. | Run a secret scan and replace public defaults with placeholders before merging to public repo. |
 | High | Docs/runtime parity | Screenshots can drift as Settings UI changes. | Refresh screenshots after UI changes and link-check GitHub Pages output. |
 | High | Full backend tests | Full pytest collection has historically been sensitive to optional provider stubs and Gemini warmup assumptions. | Keep optional imports lazy and add collection-only CI smoke before broad refactors. |
 | Medium | OBS lifecycle | OBS can be launched/closed/reconfigured while backend is running. | Continue hardening reconnect/catalog invalidation and expose operator-friendly status. |
@@ -380,9 +381,9 @@ This table lists the endpoints maintainers most often need. It is not a replacem
 | Medium | Frontend/backend schema drift | Settings types and backend defaults are maintained separately. | Add a schema alignment test or generated type check for high-impact config sections. |
 | Low | Legacy API overlap | Some skill endpoints exist in both `/api/interaction/*` and `/api/skills/*`. | Preserve compatibility but prefer one documented operator surface per feature. |
 
-## 13. Verification commands
+## 13. Maintainer verification commands
 
-Run these after code changes. For docs-only changes, at least run the docs link/check commands and a frontend build to catch broken local links imported by public pages.
+Keep this checklist here as the canonical replacement for ad-hoc phase notes under `docs-dev/`. Run these after code changes. For docs-only changes, at least run the docs link/check commands and a frontend build to catch broken local links imported by public pages.
 
 ```bash
 # Markdown/path sanity
@@ -408,9 +409,9 @@ uv run --python 3.12 \
 
 If the full backend suite fails during collection, inspect the first collection error before changing production code. Do not delete tests to make the suite green.
 
-## 14. Public documentation maintenance
+## 14. Maintainer public documentation workflow
 
-The public repository sync workflow publishes `README.md`, `TECHNICAL_DOCS.md`, and `docs/**` to `hsool/amyayabot-alpha`. Keep these rules:
+Keep this policy here because `docs-dev/` is not a tracked documentation surface. The public repository sync workflow publishes `README.md`, `TECHNICAL_DOCS.md`, and `docs/**` to `hsool/amyayabot-alpha`. Keep these rules:
 
 - Write streamer-facing docs in `docs/` with concrete setup steps, screenshots, effects, and cautions.
 - Keep maintainer internals in `TECHNICAL_DOCS.md`; do not scatter new phase notes under `docs-dev/` or `docs-legacy/v2`.
