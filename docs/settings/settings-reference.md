@@ -310,8 +310,9 @@ STT 설정은 마이크 입력과 대화 모드를 다룹니다.
 | 설정 | 효과 |
 | --- | --- |
 | 렌더링 모드 | PNG 교체, SVG 파츠 기반, Live2D 중 선택 |
-| 아바타 세트 | 기본/커스텀 PNG 세트 선택 |
-| Live2D 모델 | `public/avatars/live2d/...` 모델 목록에서 선택 |
+| PNG 모델 | `data/avatars/png/<모델명>/`의 감정별 PNG 세트 선택 |
+| SVG 모델 | `data/avatars/svg/<모델명>/`의 파츠 기반 SVG 세트 선택 |
+| Live2D 모델 | `data/avatars/live2d/<모델명>/` 모델 목록에서 선택 |
 | 뷰포트 가로/세로 | 오버레이 안에서 아바타가 차지하는 박스 크기 |
 | 위치 | 화면 어느 쪽에 배치할지 선택 |
 | 맞춤 방식 contain | 이미지 전체를 보이게 맞춤 |
@@ -320,6 +321,8 @@ STT 설정은 마이크 입력과 대화 모드를 다룹니다.
 | 감정 표현식 | AI emotion을 Live2D expression에 매핑 |
 | 모션 강도 | 깜빡임/호흡/idle motion 강도 |
 | 제스처 속도 | 감정 제스처 애니메이션 속도 |
+
+개발 모드에서는 같은 구조를 `frontend/public/avatars/{png,svg,live2d}/...` 아래에 두면 됩니다. 릴리즈 빌드에서는 사용자가 `data/avatars/png`, `data/avatars/svg`, `data/avatars/live2d` 아래에 모델 폴더를 추가하면 설정 화면의 모델 목록에 표시됩니다.
 
 PNG 모드는 `neutral`, `happy`, `surprised`, `angry`, `love`, `sad`, `excited`, `confused`, `sleepy`, `embarrassed`, `playful`, `smug`, `scared`, `touched`, `bored` 감정 이미지를 사용합니다.
 

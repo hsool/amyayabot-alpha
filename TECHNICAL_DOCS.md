@@ -281,7 +281,7 @@ flowchart TD
 | STT models | `/api/stt/model-*`, `SttService` | Operator enables STT or test transcription | Model not downloaded, optional audio backend missing, CPU too slow, VAD threshold too strict |
 | TTS engines | `/api/tts/preview`, voice search/status endpoints | Overlay delivery or preview | Missing API key/voice ID, browser audio muted, provider latency |
 | YouTube/yt-dlp | `/api/song-request/*`, `/api/stream/{video_id}` | Song request skill/API and music overlay | Search failure, stream extraction failure, runtime helper not installed |
-| Live2D/Pixi | `/api/live2d-models`, frontend avatar components | Overlay render | Missing model files, path mismatch, heavy GPU/CPU load |
+| Avatar assets / Live2D-Pixi | `/api/avatar-models`, `/api/live2d-models`, frontend avatar components | Overlay render | Missing model files, path mismatch, heavy GPU/CPU load |
 
 ## 10. API surfaces
 
